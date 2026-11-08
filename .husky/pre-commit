@@ -1,0 +1,5 @@
+pnpm exec lint-staged
+pnpm typecheck
+pnpm test
+# Floor guard (CONSTRAINTS.md). Skipped only for the very first commit, when there is no HEAD to diff against.
+if git rev-parse --verify --quiet HEAD >/dev/null; then node scripts/floor-guard.mjs; fi
