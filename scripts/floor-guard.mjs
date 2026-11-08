@@ -149,6 +149,7 @@ for (const { file, text } of removed) {
 // edit was removed, and an added one tightens.
 const ruleKey = (t) => {
   const s = t.trim();
+  if (/^\|[\s|:-]+\|$/.test(s)) return null; // table separator row (re-padded by Prettier), not a rule
   if (s.startsWith("|"))
     return (
       s
@@ -204,6 +205,18 @@ for (const r of removedRules) {
   for (const dir of ["min", "max", null]) {
     const was = before.filter((x) => x.dir === dir),
       now = after.filter((x) => x.dir === dir);
+    // Undirected numbers: if every old value is still present, nothing was changed or removed
+    // (e.g. a measured value filled in ahead of an existing tolerance). Otherwise pair by position.
+    if (dir === null) {
+      const pool = now.map((x) => x.n);
+      const allKept = was.every((b) => {
+        const k = pool.indexOf(b.n);
+        if (k === -1) return false;
+        pool.splice(k, 1);
+        return true;
+      });
+      if (allKept) continue;
+    }
     was.forEach((b, i) => {
       const n = now[i];
       if (verdict) return;

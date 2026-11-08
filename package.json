@@ -10,7 +10,19 @@
     "tauri": "tauri",
     "prepare": "husky",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run --passWithNoTests",
+    "lint": "eslint .",
+    "check:secrets": "gitleaks git --pre-commit --redact --no-banner",
+    "check:fast": "tsc --noEmit && eslint . && node scripts/floor-guard.mjs && pnpm check:secrets",
+    "check:rust": "cargo fmt --manifest-path src-tauri/Cargo.toml --check && cargo clippy --manifest-path src-tauri/Cargo.toml -- -D warnings",
+    "check:coverage": "vitest run --coverage && cargo llvm-cov --manifest-path src-tauri/Cargo.toml --lcov --output-path src-tauri/lcov.info && scripts/coverage-diff.sh",
+    "check:arch": "depcruise --validate .dependency-cruiser.cjs src",
+    "check:bundle": "vite build && size-limit",
+    "check:sast": "semgrep scan --error --severity ERROR --config p/default --config p/typescript --config p/rust --metrics off --quiet src src-tauri/src",
+    "check:a11y": "node scripts/a11y.mjs",
+    "check:task": "pnpm check:fast && prettier --check . && pnpm check:rust && pnpm check:coverage && pnpm check:arch && pnpm check:bundle && pnpm check:sast && pnpm check:a11y",
+    "check:full": "pnpm check:task && pnpm check:deps && gitleaks git --redact --no-banner",
+    "check:deps": "node scripts/osv-gate.mjs"
   },
   "dependencies": {
     "@tauri-apps/api": "^2",
@@ -19,14 +31,25 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@eslint/js": "^10.0.1",
+    "@size-limit/file": "^14.3.0",
     "@tauri-apps/cli": "^2",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^6.0.2",
+    "@vitest/coverage-v8": "^5.1.0",
+    "dependency-cruiser": "^18.7.2",
+    "eslint": "^10.14.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.14.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
+    "playwright": "^1.65.0",
     "prettier": "^3.9.10",
+    "size-limit": "^14.3.0",
     "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.1",
     "vite": "^8.0.16",
     "vitest": "^5.1.0"
   }
