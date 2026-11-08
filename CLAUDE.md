@@ -4,8 +4,20 @@ A cross-platform desktop/mobile app for reading comics from a Jellyfin server.
 
 ## Tech Stack
 
-- Tauri (Rust shell) + React + TypeScript
-- UI: shadcn/ui + Tailwind CSS
+- Tauri 2 (Rust shell) + React 19 + TypeScript (strict) + Vite, pnpm
+- UI: shadcn/ui + Tailwind CSS. **Planned, not installed yet.** Until it is, there are no `@/components/ui/*` modules and no Tailwind classes; don't import or use them.
+
+## Layout
+
+- `src/`: React frontend. `main.tsx` is the entry point. `App.tsx`/`App.css` are create-tauri-app demo code, so don't copy their patterns.
+- `src/lib/jellyfin/`: the single Jellyfin API client (**planned**, doesn't exist yet). All network access goes here.
+- `src-tauri/src/lib.rs`: Tauri builder and `#[tauri::command]`s. `greet` is demo code. `main.rs` only calls `run()`.
+- `src-tauri/capabilities/default.json`: webview permissions (currently `core:default`, `opener:default`).
+- `src-tauri/tauri.conf.json`: app config (id `com.grimfeld.jellyfin-comics-reader`, dev URL `http://localhost:1420`).
+- `scripts/floor-guard.mjs`: diff-scoped quality floor, see `CONSTRAINTS.md`.
+- `docs/agents/`: config for the agent skills (issue tracker, labels, domain docs).
+
+There's no real feature code yet, so there's no in-repo pattern to follow. Ask rather than invent one, and once the first real component or command lands, add it here as the reference example.
 
 ## Commands
 
