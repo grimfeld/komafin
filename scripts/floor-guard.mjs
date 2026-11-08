@@ -156,6 +156,7 @@ const ruleKey = (t) => {
         .map((c) => c.trim())
         .filter(Boolean)[0] ?? ""
     );
+  if (/^[-*] \[[ xX]\] /.test(s)) return null; // task-list item (Setup status), not a rule
   if (/^[-*] /.test(s)) return s.slice(2).split(":")[0].trim();
   return null; // prose, headings, dates: not a rule
 };

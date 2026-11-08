@@ -57,11 +57,11 @@ Exceptions default to a 90-day lifetime; none may run more than a year.
 
 The project isn't scaffolded yet, so only the floor guard exists. When the Tauri app is created:
 
-- [ ] `git init` and an initial commit (the floor guard needs a merge base)
-- [ ] Dev deps: `vitest @vitest/coverage-v8 eslint prettier dependency-cruiser size-limit @size-limit/preset-app @axe-core/cli`
+- [x] `git init` and an initial commit (the floor guard needs a merge base)
+- [ ] Dev deps (vitest and prettier done): `vitest @vitest/coverage-v8 eslint prettier dependency-cruiser size-limit @size-limit/preset-app @axe-core/cli`
 - [ ] Rust: `cargo install cargo-llvm-cov`, `rustup component add clippy rustfmt llvm-tools-preview`
 - [ ] Machine-wide or CI only: `gitleaks`, `osv-scanner`, `semgrep`, `diff-cover`
 - [ ] Write `.dependency-cruiser.cjs` and the ESLint `fetch` restriction for the rules above
 - [ ] Add `check:fast`, `check:task` and `check:full` scripts to `package.json`, mirroring this file (this file wins if they drift)
-- [ ] Wire `check:fast` into a Claude Code post-edit hook and `check:full` into CI
+- [ ] Pre-commit hook done (lint-staged/Prettier, typecheck, test, floor guard). Still to do: wire `check:fast` into a Claude Code post-edit hook and `check:full` into CI
 - [ ] Record first-run values in "Measured, not yet enforced"

@@ -9,7 +9,16 @@ A cross-platform desktop/mobile app for reading comics from a Jellyfin server.
 
 ## Commands
 
-Not scaffolded yet. Once the project exists, record the real build, dev, test, lint and type-check commands here. Don't guess them.
+Package manager: **pnpm**.
+
+- Dev (desktop app): `pnpm tauri dev` (Vite alone: `pnpm dev`, port 1420)
+- Build: `pnpm tauri build` (frontend only: `pnpm build`)
+- Type-check: `pnpm typecheck`
+- Test: `pnpm test` (Vitest)
+- Format: `pnpm exec prettier --write .`
+- Floor guard: `node scripts/floor-guard.mjs`
+
+The pre-commit hook (Husky) runs lint-staged (Prettier), then the type-check, the tests and the floor guard. Never bypass it with `--no-verify`. No ESLint or Rust checks yet; see `CONSTRAINTS.md` → Setup status.
 
 ## Code Conventions
 
