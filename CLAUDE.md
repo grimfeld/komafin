@@ -28,9 +28,13 @@ Package manager: **pnpm**.
 - Type-check: `pnpm typecheck`
 - Test: `pnpm test` (Vitest)
 - Format: `pnpm exec prettier --write .`
+- Lint: `pnpm lint`
 - Floor guard: `node scripts/floor-guard.mjs`
+- Quality checks (see `CONSTRAINTS.md`): `pnpm check:fast` after edits (~2 s), `pnpm check:task` before declaring a task done (~25 s warm), `pnpm check:full` in CI
 
-The pre-commit hook (Husky) runs lint-staged (Prettier), then the type-check, the tests and the floor guard. Never bypass it with `--no-verify`. No ESLint or Rust checks yet; see `CONSTRAINTS.md` → Setup status.
+The pre-commit hook (Husky) runs lint-staged (Prettier), then the type-check, the tests and the floor guard. Never bypass it with `--no-verify`. Rust checks run in `check:task`, not in the hook.
+
+**Known issue on this machine (2026-11-08):** `xcrun` selects the macOS 27.0 SDK, which the installed Command Line Tools 26.6 linker can't read (`tapi error: malformed file … unknown architecture`). Rust builds fail until the CLT are updated. Workaround: `export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk`.
 
 ## Code Conventions
 
