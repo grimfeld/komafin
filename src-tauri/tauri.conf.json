@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "jellyfin-comics-reader",
+  "productName": "Komafin",
   "version": "0.1.0",
-  "identifier": "com.grimfeld.jellyfin-comics-reader",
+  "identifier": "com.grimfeld.komafin",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "jellyfin-comics-reader",
+        "title": "Komafin",
         "width": 800,
         "height": 600
       }

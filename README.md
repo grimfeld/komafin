@@ -1,7 +1,18 @@
-# Tauri + React + Typescript
+# Komafin
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+A cross-platform reader for comics and manga hosted on [Jellyfin](https://jellyfin.org), built with Tauri, React and TypeScript.
 
-## Recommended IDE Setup
+_Koma_ (コマ) is the Japanese word for a manga panel.
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+> Early development. Not affiliated with the Jellyfin project.
+
+## Development
+
+Requires Node 22, pnpm, and Rust (version pinned in `rust-toolchain.toml`) plus the [Tauri prerequisites](https://tauri.app/start/prerequisites/).
+
+```sh
+pnpm install
+pnpm tauri dev
+```
+
+Quality checks are defined in [`CONSTRAINTS.md`](CONSTRAINTS.md): `pnpm check:fast`, `pnpm check:task` and `pnpm check:full`.

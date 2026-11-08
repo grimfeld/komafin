@@ -2,5 +2,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    jellyfin_comics_reader_lib::run()
+    komafin_lib::run()
 }

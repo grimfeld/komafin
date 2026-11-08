@@ -1,6 +1,6 @@
-# Project: jellyfin-comics-reader
+# Project: Komafin
 
-A cross-platform desktop/mobile app for reading comics from a Jellyfin server.
+Komafin (from _koma_, コマ, a manga panel) is a cross-platform desktop/mobile app for reading comics and manga hosted on a Jellyfin server, with the focus on a great reading UI/UX.
 
 ## Tech Stack
 
@@ -13,7 +13,7 @@ A cross-platform desktop/mobile app for reading comics from a Jellyfin server.
 - `src/lib/jellyfin/`: the single Jellyfin API client (**planned**, doesn't exist yet). All network access goes here.
 - `src-tauri/src/lib.rs`: Tauri builder and `#[tauri::command]`s. `greet` is demo code. `main.rs` only calls `run()`.
 - `src-tauri/capabilities/default.json`: webview permissions (currently `core:default`, `opener:default`).
-- `src-tauri/tauri.conf.json`: app config (id `com.grimfeld.jellyfin-comics-reader`, dev URL `http://localhost:1420`).
+- `src-tauri/tauri.conf.json`: app config (id `com.grimfeld.komafin`, dev URL `http://localhost:1420`).
 - `scripts/floor-guard.mjs`: diff-scoped quality floor, see `CONSTRAINTS.md`.
 - `docs/agents/`: config for the agent skills (issue tracker, labels, domain docs).
 
