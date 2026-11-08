@@ -69,5 +69,5 @@ Exceptions default to a 90-day lifetime; none may run more than a year.
 - [x] Pre-commit hook: lint-staged/Prettier, typecheck, test, floor guard
 - [x] First-run values recorded in "Measured, not yet enforced"
 - [ ] Wire `check:fast` into a Claude Code post-edit hook (`.claude/settings.json`)
-- [x] CI workflow `.github/workflows/ci.yml` runs `pnpm check:full` on PRs and pushes to main (written and checked with actionlint; hasn't run yet because the GitHub repo doesn't exist)
-- [ ] Create the GitHub repo, push, then protect `main` with `check:full` as a required status check
+- [x] CI workflow `.github/workflows/ci.yml` runs `pnpm check:full` on PRs and pushes to main (first run passed 2026-11-08, about 9 min cold)
+- [x] GitHub repo `grimfeld/komafin` (public); `main` protected: `check:full` required (GitHub Actions app only), enforced for admins, no force-push or deletion
