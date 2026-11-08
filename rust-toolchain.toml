@@ -1,0 +1,4 @@
+# Pinned so `clippy -D warnings` gives the same verdict locally and in CI. Bump deliberately.
+[toolchain]
+channel = "1.99.0"
+components = ["clippy", "rustfmt", "llvm-tools-preview"]

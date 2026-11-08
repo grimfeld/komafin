@@ -69,4 +69,5 @@ Exceptions default to a 90-day lifetime; none may run more than a year.
 - [x] Pre-commit hook: lint-staged/Prettier, typecheck, test, floor guard
 - [x] First-run values recorded in "Measured, not yet enforced"
 - [ ] Wire `check:fast` into a Claude Code post-edit hook (`.claude/settings.json`)
-- [ ] CI workflow running `pnpm check:full` (needs the GitHub repo; Linux runners also need Tauri's system packages for the Rust checks)
+- [x] CI workflow `.github/workflows/ci.yml` runs `pnpm check:full` on PRs and pushes to main (written and checked with actionlint; hasn't run yet because the GitHub repo doesn't exist)
+- [ ] Create the GitHub repo, push, then protect `main` with `check:full` as a required status check

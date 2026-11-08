@@ -34,6 +34,8 @@ Package manager: **pnpm**.
 
 The pre-commit hook (Husky) runs lint-staged (Prettier), then the type-check, the tests and the floor guard. Never bypass it with `--no-verify`. Rust checks run in `check:task`, not in the hook.
 
+CI (`.github/workflows/ci.yml`) runs `pnpm check:full` on every PR and push to main. When it fails, read the failing step with `gh run view --log-failed`, reproduce it locally with the same `pnpm check:*` script, fix the code, and push. Never disable a check or edit `CONSTRAINTS.md` to get green. The Rust toolchain is pinned in `rust-toolchain.toml`.
+
 **Known issue on this machine (2026-11-08):** `xcrun` selects the macOS 27.0 SDK, which the installed Command Line Tools 26.6 linker can't read (`tapi error: malformed file … unknown architecture`). Rust builds fail until the CLT are updated. Workaround: `export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk`.
 
 ## Code Conventions
